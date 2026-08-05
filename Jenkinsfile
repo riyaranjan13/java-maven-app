@@ -4,12 +4,6 @@ pipeline {
         maven 'Maven-3.9'
     }
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/riyaranjan13/java-maven-app.git'
-            }
-        }
         stage('Build') {
             steps {
                 dir('hello-world') {
@@ -40,7 +34,13 @@ pipeline {
                 }
             }
         }
-
+        stage('Package') {
+            steps {
+                dir('hello-world') {
+                    sh 'mvn package -DskipTests'
+                }
+            }
+        }
         stage('Archive Artifact') {
             steps {
                 archiveArtifacts artifacts: 'hello-world/target/*.jar'
