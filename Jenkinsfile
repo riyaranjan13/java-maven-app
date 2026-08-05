@@ -13,24 +13,23 @@ pipeline {
         stage('Build') {
             steps {
                 dir('hello-world') {
-                    sh 'mvn test'
+                    sh 'mvn clean compile'
                 }
             }
         }
         stage('Unit Test') {
             steps {
-                sh 'mvn test'
+                dir('hello-world') {
+                    sh 'mvn test'
+                }
             }
         }
         stage('SonarQube Analysis') {
-            environment {
-                scannerHome =
-                tool 'SonarScanner'
-            }
             steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh '''mvn sonar:sonar \
-                    -Dsonar.projectKey=hello-world'''
+                dir('hello-world') {
+                    withSonarQubeEnv('SonarQube') {
+                        sh 'mvn sonar:sonar'
+                    }
                 }
             }
         }
@@ -43,7 +42,7 @@ pipeline {
         }
         stage('Archive Artifact') {
             steps {
-                archiveArtifacts artifacts:'target/*.jar'
+                archiveArtifacts artifacts: 'hello-world/target/*.jar'
             }
         }
     }
