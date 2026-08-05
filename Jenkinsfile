@@ -40,6 +40,7 @@ pipeline {
                 }
             }
         }
+
         stage('Archive Artifact') {
             steps {
                 archiveArtifacts artifacts: 'hello-world/target/*.jar'
