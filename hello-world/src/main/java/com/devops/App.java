@@ -4,7 +4,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        System.out.println("DevOps CI/CD Pipeline");
+        logger.log("DevOps CI/CD Pipeline");
 
     }
 }
