@@ -12,7 +12,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "source ./hello-world && mvn clean package"
+                dir('hello-world') {
+                    sh 'mvn test'
+                }
             }
         }
         stage('Unit Test') {
