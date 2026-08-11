@@ -1,34 +1,62 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.devops</groupId>
-  <artifactId>hello-world</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>hello-world</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+      https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<modelVersion>4.0.0</modelVersion>
+
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.4</version>
+    <relativePath/>
+</parent>
+
+<groupId>com.devops</groupId>
+<artifactId>hello-world</artifactId>
+<version>1.0-SNAPSHOT</version>
+
+<name>hello-world</name>
+<description>Azure DevOps Hello World Application</description>
+
+<properties>
+    <java.version>21</java.version>
+    <sonar.projectKey>hello-world</sonar.projectKey>
+    <sonar.projectName>Hello World Java Project</sonar.projectName>
+    <sonar.host.url>http://65.0.12.155:9000</sonar.host.url>
+</properties>
+
+<dependencies>
+
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-  </dependencies>
-  <properties>
-  <maven.compiler.source>21</maven.compiler.source>
-  <maven.compiler.target>21</maven.compiler.target>
-  <sonar.projectKey>hello-world</sonar.projectKey>
-  <sonar.projectName>Hello World Java Project</sonar.projectName>
-  <sonar.host.url>http://65.0.12.155:9000</sonar.host.url>
-  </properties>
-  <build>
-  <plugins>
-  <plugin>
-  <groupId>org.sonarsource.scanner.maven</groupId>
-  <artifactId>sonar-maven-plugin</artifactId>
-  <version>3.10.0.2594</version>
-  </plugin>
-  </plugins>
-  </build>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+</dependencies>
+
+<build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+
+        <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.10.0.2594</version>
+        </plugin>
+
+    </plugins>
+</build>
+
 </project>
+
